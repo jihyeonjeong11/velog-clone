@@ -1,0 +1,8 @@
+{
+  "name": "ls",
+  "version": "0.0.1",
+  "description": "velog clone",
+  "main": "index.js",
+  "author": "jih",
+  "license": "MIT"
+}
