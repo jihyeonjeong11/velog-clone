@@ -38,3 +38,21 @@ webpack-dev-server — Webpack dev server is a mini Node.js Express server.It us
 
 웹팩cli - 커맨드라인 툴
 웹팩-dev-server dev 환경에서 websocket으로 돌아가는 로컬 서버 만드는 용
+
+4. babel dependencies 설치
+
+npm i --save-dev babel-loader @babel/preset-env @babel/core 
+@babel/plugin-transform-runtime 
+@babel/preset-react 
+@babel/eslint-parser 
+@babel/runtime
+@babel/cli
+
+babel-loader 트랜스파일링 용 
+babel/preset-env js 신택스 변환용(폴리필과 함께)
+babel/core 바벨 코어
+@babel/plugin-transform-runtime 바벨 코드 재사용 용
+babel/preset-react 리액트용 바벨
+babel/runtime 바벨 실행용 디펜던시
+babel/cli 커맨드라인 툴
+babel/eslint-parser 말그대로 eslint용 변환기
