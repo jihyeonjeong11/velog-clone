@@ -1,6 +1,11 @@
-import React from "react";
-import reactDom from "react-dom";
+import React from "react"
 import App from "./src/App"
-
-
-reactDom.render(<App />, document.getElementById("root"));
+import './index.css'
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
+  <React.StrictMode>
+    <App tab="home" />
+  </React.StrictMode>
+  );

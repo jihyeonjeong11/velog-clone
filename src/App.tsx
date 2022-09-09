@@ -1,15 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+import Logo from "./svgs/Logo.svg";
+import MainTemplate from "./components/main/MainTemplate";
+import SpinnerBlock from "./components/common/SpinnerBlock";
 
-const App = () =>{
-    console.log('load')
-    return (
+const App = () => {
+  return (
+    <main>
+      <MainTemplate>
         <h1>
-            Welcome to React App thats build using Webpack and Babel separately
+          Welcome to React App thats build using Webpack and Babel separately
         </h1>
-    )
-}
+      <SpinnerBlock />
+      <Logo />
+      </MainTemplate>
+    </main>
+  );
+};
 
-export default App
+export default App;
 
 // 원본
 
