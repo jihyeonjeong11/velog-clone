@@ -41,11 +41,7 @@ webpack-dev-server — Webpack dev server is a mini Node.js Express server.It us
 
 4. babel dependencies 설치
 
-npm i --save-dev babel-loader @babel/preset-env @babel/core 
-@babel/plugin-transform-runtime 
-@babel/preset-react 
-@babel/eslint-parser 
-@babel/runtime
+yarn add -D babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/runtime
 @babel/cli
 
 babel-loader 트랜스파일링 용 
@@ -56,3 +52,27 @@ babel/preset-react 리액트용 바벨
 babel/runtime 바벨 실행용 디펜던시
 babel/cli 커맨드라인 툴
 babel/eslint-parser 말그대로 eslint용 변환기
+
+5. eslint 관련부분 설치
+
+npm i --save-dev eslint eslint-config-airbnb-base 
+eslint-plugin-jest 
+eslint-config-prettier
+path
+
+6. react react-dom 설치
+
+npm i react react-dom
+
+7. index.html public폴더에 추가
+
+8. src에 app.tsx, index.js 추가
+
+9. ./config/webpack.config.js 적용
+
+10. root/.babelrc 생성
+
+11. package.json 에 커맨드 추가
+
+
+https://github.com/carloluis/webpack-demo/blob/master/package.json
