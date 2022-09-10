@@ -14,6 +14,8 @@ function SpinnerBlock() {
   );
 }
 
+
+//sk-chase spinkit 확인
 const Block = styled.div`
   width: 100px;
   height: 100px;

@@ -77,11 +77,12 @@ module.exports = {
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        use: ["@svgr/webpack"],
+
+        use: ["@svgr/webpack", "url-loader"],
       },
       {
         test: /\.css$/i, // css-loader
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.tsx?$/,
