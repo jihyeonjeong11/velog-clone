@@ -26,8 +26,6 @@ const App = () => {
       <GlobalStyles />
       <MainTemplate>
         <ErrorBoundary>
-          <SpinnerBlock />
-          <Logo />
           <Router>
           <ConditionalBackground />
 

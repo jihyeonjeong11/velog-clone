@@ -155,7 +155,7 @@ const buildCssVariables = (variables: ThemeVariables) => {
       acc.concat(`--${key.replace(/_/g, '-')}: ${variables[key]};`, '\n'),
     '',
   );
-};
+}; // Object.keys().reduce 와 concat을 써서 acc + 스트링이 된다.
 
 export const themes = {
   light: buildCssVariables(themeVariableSets.light),
@@ -164,9 +164,12 @@ export const themes = {
 
 
 const cssVar = (name: string) => `var(--${name.replace(/_/g, '-')})`;
+// styled-components에서가져다 쓰기 위해 var 선택자로 만들어줌
 
 const variableKeys = Object.keys(themeVariableSets.light) as VariableKey[];
 
+
+// 굳이 reduce를 한번 더 써서 넣어준 이유는 ? var 선택자를 사용하도록 바꿔서 rxport 하기 위함.
 export const themedPalette: Record<VariableKey, string> = variableKeys.reduce(
   (acc, current) => {
     acc[current] = cssVar(current);
@@ -174,3 +177,12 @@ export const themedPalette: Record<VariableKey, string> = variableKeys.reduce(
   },
   {} as ThemedPalette,
 );
+
+//여기 사용된 펑션은 총  4가지
+
+// 따라서, 엄밀히 말하면 1. 펑션도 한번 쪼갤 수 있다.(key를 뽑고 -> reduce로 리턴하니까)
+
+// 1. buildCssVariables object에서 key를 뽑아 reduce로 string형태로 리턴  e.g.) --main-bg-color: brown;
+// 2. cssVar = styledComponent에서 사용하기 위해 var(--bg-page1) 형태로 변환.
+// 3. variableKeys = 오브젝트의 key를 반환
+// 4. themedPalette = 3.에서 cssVar 형태의 스트링 반환
