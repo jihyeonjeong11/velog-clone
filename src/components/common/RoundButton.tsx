@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { buttonColorMap } from "../../lib/styles/buttonColorMap";
-import { Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { themedPalette } from "../../lib/styles/themes";
 
 type ButtonSize = "SMALL" | "DEFAULT" | "LARGE";
@@ -11,6 +11,7 @@ type RoundButtonBlockProps = {
   color: string;
   size: ButtonSize;
   border: boolean;
+  path?: string;
 };
 
 const RoundButtonBlock = styled.button<RoundButtonBlockProps>`
@@ -23,7 +24,7 @@ const RoundButtonBlock = styled.button<RoundButtonBlockProps>`
     `}
 
   ${(props) =>
-    props.size === 'SMALL' &&
+    props.size === "SMALL" &&
     css`
       height: 1.5rem;
       padding-left: 0.75rem;
@@ -32,7 +33,7 @@ const RoundButtonBlock = styled.button<RoundButtonBlockProps>`
       border-radius: 0.75rem;
     `};
   ${(props) =>
-    props.size === 'DEFAULT' &&
+    props.size === "DEFAULT" &&
     css`
       height: 2rem;
       padding-left: 1rem;
@@ -41,7 +42,7 @@ const RoundButtonBlock = styled.button<RoundButtonBlockProps>`
       border-radius: 1rem;
     `};
   ${(props) =>
-    props.size === 'LARGE' &&
+    props.size === "LARGE" &&
     css`
       height: 3rem;
       font-size: 1.5rem;
@@ -84,7 +85,6 @@ const RoundButtonBlock = styled.button<RoundButtonBlockProps>`
   }
 `;
 
-
 type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
@@ -94,37 +94,34 @@ interface RoundButtonProps extends ButtonProps {
   inline?: boolean;
   to?: string;
   size?: ButtonSize;
-  color?: 'teal' | 'gray' | 'darkGray' | 'lightGray';
+  color?: "teal" | "gray" | "darkGray" | "lightGray";
   border?: boolean;
 }
 
 const RoundButton: React.FC<RoundButtonProps> = ({
   ref,
   to,
-  color = 'teal',
-  size = 'DEFAULT',
+  color = "teal",
+  size = "DEFAULT",
   border = false,
   ...rest
 }) => {
+  let navigate = useNavigate();
   if (to) {
     return (
-      <Route
-        element={
-          <RoundButtonBlock
-            color={color}
-            onClick={(e) => {
-              // e.preventDefault();
-              // history.push(to);
-            }}
-            size={size}
-            border={border}
-            {...rest}
-          />
-        }
-        />
-        
-      
-    )
+      <RoundButtonBlock
+        color={color}
+        onClick={(e) => {
+          // e.preventDefault();
+          // history.push(to);
+          navigate("./test2");
+        }}
+        path={to}
+        size={size}
+        border={border}
+        {...rest}
+      />
+    );
   }
   return (
     <RoundButtonBlock color={color} size={size} border={border} {...rest} />

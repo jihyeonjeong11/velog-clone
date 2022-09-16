@@ -3,10 +3,10 @@ import Block from "../common/Block";
 import SpinnerBlock from "../common/SpinnerBlock";
 import MainResponsive from "../main/MainResponsive";
 import styled from "styled-components";
-import { Search } from "../../static/svgs/index";
+import { SearchIcon } from "../../static/svgs/index";
 import media from "../../lib/styles/media";
 import HeaderLogo from "./HeaderLogo";
-import { Link } from "react-router-dom";
+import { Link, Routes } from "react-router-dom";
 import { themedPalette } from "../../lib/styles/themes";
 import ThemeToggleButton from "./ThemeToggleButton";
 import RoundButton from "../common/RoundButton";
@@ -21,19 +21,34 @@ function Header() {
       <Block>
         <HeaderOuter>
           <Inner>
-            <HeaderLogo custom={false} userName="jihyeon" />
-            <Right>
-              <ThemeToggleButton />
-              <SearchButton to={() => null}>
-                <Search />
-              </SearchButton>
-              <RoundButton color="gray" onClick={() => null}>
-                새 글 작성
-              </RoundButton>
-              <RoundButton color="darkGray" onClick={() => null}>
-                로그인
-              </RoundButton>
-            </Right>
+            <HeaderLogo custom={false} userName='jihyeon' />
+            {false ? (
+              <Right>
+                <ThemeToggleButton />
+                <SearchButton to={"/"}>
+                  <SearchIcon />
+                </SearchButton>
+                <RoundButton
+                  border
+                  color='darkGray'
+                  style={{ marginRight: "1.25rem" }}
+                  to='/write'
+                  className='write-button'
+                >
+                  새 글 작성
+                </RoundButton>
+              </Right>
+            ) : (
+              <Right>
+                <ThemeToggleButton />
+                <SearchButton to={"/test"}>
+                  <SearchIcon />
+                </SearchButton>
+                <RoundButton color='darkGray' to={"/test2"}>
+                  로그인
+                </RoundButton>
+              </Right>
+            )}
           </Inner>
         </HeaderOuter>
       </Block>
@@ -41,7 +56,7 @@ function Header() {
   );
 }
 
-const SearchButton = styled(Link)<{ to: () => void }>`
+const SearchButton = styled(Link)<{ to: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +91,6 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-
 `;
 
 // ${media.medium} {
